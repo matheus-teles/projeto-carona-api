@@ -4,6 +4,13 @@ class RidesController < ApplicationController
         render json: rides, include: 'driver' 
     end
 
+    def show
+      ride = Ride.includes(:passengers).find(params[:id])
+      render :json => ride, :include => [
+        :driver, 
+        :passengers] , status: :ok
+    end
+
     def create
         ride = Ride.new(create_params)
     
