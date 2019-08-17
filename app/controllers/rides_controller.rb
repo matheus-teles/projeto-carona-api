@@ -1,11 +1,12 @@
 class RidesController < ApplicationController
     def index
-        render json: Ride.all
+        rides = Ride.all
+        render json: rides, include: 'driver' 
     end
 
     def create
         ride = Ride.new(params)
-
+    
         if ride.save
             head 201
         else
