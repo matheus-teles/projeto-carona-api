@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :create]
   resources :sessions, only: [:create]
   resources :rides, only: [:index, :create] do
-    get "start", to: "start_ride#create"
-    get "end", to: "end_ride#create"
+    scope module: :rides do
+      resources :start, only: :create
+      resources :end, only: :create
+    end
   end
 end
