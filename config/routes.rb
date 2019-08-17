@@ -8,5 +8,4 @@ Rails.application.routes.draw do
       resources :start, only: :create
       resources :end, only: :create
     end
-  end
 end
