@@ -1,6 +1,6 @@
 class RidesController < ApplicationController
   def index
     rides = Ride.all
-    render json: { rides: rides }
+    render json: rides, include: 'driver' 
   end
 end
