@@ -1,6 +1,6 @@
 class RidesController < ApplicationController
     def index
-        rides = Ride.all
+        rides = Ride.created
         render json: rides, include: 'driver' 
     end
 
@@ -10,7 +10,7 @@ class RidesController < ApplicationController
         if ride.save
             head 201
         else
-            render status: 403, json: ride
+            render status: 406, json: ride.errors
         end
     end
 end
