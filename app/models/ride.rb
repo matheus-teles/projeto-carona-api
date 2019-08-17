@@ -12,4 +12,6 @@ class Ride < ApplicationRecord
     scope :created, -> { where(status: 0) }
     scope :started, -> { where(status: 1) }
     scope :ended, -> { where(status: 2) }
+    scope :active, -> { where(status: [0, 1])}
+
 end
