@@ -3,7 +3,7 @@ module Rides
     def create
       ride = Ride.find(params[:ride_id])
       if ride.update(status: 1)
-        head 200
+        render status: 201, json: ride
       else
         render status: 406, json: ride.errors
       end
