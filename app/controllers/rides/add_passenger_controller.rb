@@ -6,7 +6,7 @@ module Rides
       if ride.passengers.count < ride.capacity
         ride.passengers << user
         if ride.save
-          head 200
+          render status: 201, json: ride
         else
           render status: 406, json: ride.errors
         end
