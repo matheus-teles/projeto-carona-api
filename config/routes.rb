@@ -7,9 +7,11 @@ Rails.application.routes.draw do
     end
   end
   resources :sessions, only: [:create]
-  resources :rides, only: [:index, :show, :create]
+  resources :rides, only: [:index, :show, :create] do
     scope module: :rides do
       resources :start, only: :create
       resources :end, only: :create
+      resources :add_passenger, only: :create
     end
+  end
 end
