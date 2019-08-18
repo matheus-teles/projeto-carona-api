@@ -15,7 +15,7 @@ class RidesController < ApplicationController
         ride = Ride.new(create_params)
     
         if ride.save
-            head 201
+            render status: 201, json: ride
         else
             render status: 406, json: ride.errors
         end
