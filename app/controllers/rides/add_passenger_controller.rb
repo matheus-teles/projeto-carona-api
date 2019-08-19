@@ -3,8 +3,10 @@ module Rides
     def create
       ride = Ride.find(params[:ride_id])
       user = User.find(params[:user_id])
-      if ride.passengers.count < ride.capacity
+
+      if ride.passengers.count < ride.capacity && ride.passengers.where(id: 2).count <= 0
         ride.passengers << user
+        ride.capacity = ride.capacity - 1
         if ride.save
           render status: 201, json: ride
         else
